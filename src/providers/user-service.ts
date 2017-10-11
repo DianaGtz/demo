@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
 
   constructor(
-    private http: Http
+    private http: HttpClient
   ) {}
 
   getUsers() {
-    return this.http.get('https://randomuser.me/api/?results=25')
-    .map(res => res.json())
-    .toPromise();
+    return this.http.get('https://randomuser.me/api/?results=25');
   }
 }
 

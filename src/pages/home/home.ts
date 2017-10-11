@@ -18,11 +18,13 @@ export class HomePage {
 
   ionViewDidLoad(){
     this.userService.getUsers()
-    .then(data => {
-      this.users = data.results;
-    })
-    .catch(error =>{
-      console.error(error);
-    })
+    .subscribe(
+      (data) => { // Success
+        this.users = data['results'];
+      },
+      (error) =>{
+        console.error(error);
+      }
+    )
   }
 }
